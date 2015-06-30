@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>
+    /**
+     *  jQuery自定义事件
+     */
+    $(function(){
+
+        var foo = {hello:'hello',world:'world'};
+
+        var $foo = $(foo);
+
+        $foo.on('custom',function(){
+            console.info($foo[0].hello + ' ' + $foo[0].world );
+        });
+
+        $foo.trigger('custom');
+    });
+</script>
+</body>
+</html>
