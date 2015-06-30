@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <ul id="first" class="nav">
+        <li><a href="#">li1</a> </li>
+        <li><a href="#">li2</a> </li>
+        <li><a href="#">li3</a> </li>
+    </ul>
+    <ul id="second"  class="nav">
+        <li><a href="#">li4</a> </li>
+        <li><a href="#">li5</a> </li>
+        <li><a href="#">li6</a> </li>
+    </ul>
+</div>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function(){
+       // $('li',$('#first')).eq(1).css({'background':'green'});
+        $('#first').find('li').eq(1).css('background','green');
+    });
+</script>
+</body>
+</html>

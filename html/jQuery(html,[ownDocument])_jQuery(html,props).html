@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container"></div>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function(){
+        var oUl = $('<ul></ul>');
+        for(var i=0;i<3;i++){
+            var oLi = $('<li></li>').attr('index',i);
+
+            var oA = $('<a></a>',{
+                text:i+1,
+                href:'#',
+                click:function(){
+                   alert($(this).parent().attr('index'));
+               }
+            });
+
+            oA.appendTo(oLi);
+            oLi.appendTo(oUl);
+        }
+
+        oUl.appendTo($('div[class=container]'));
+    });
+</script>
+</body>
+</html>
