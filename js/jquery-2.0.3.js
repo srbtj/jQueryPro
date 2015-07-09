@@ -383,7 +383,7 @@ jQuery.extend({
 	// the ready event fires. See #6781
 	readyWait: 1,
 
-	// Hold (or release) the ready event
+	// Hold (or release) the ready event    延迟对象    hold : true or false;
 	holdReady: function( hold ) {
 		if ( hold ) {
 			jQuery.readyWait++;
@@ -496,7 +496,7 @@ jQuery.extend({
 		}
 		context = context || document;
 
-		var parsed = rsingleTag.exec( data ),
+		var parsed = rsingleTag.exec( data ),//  '<li>/<li></li>'.exec('<li>','li',null);
 			scripts = !keepScripts && [];
 
 		// Single tag
