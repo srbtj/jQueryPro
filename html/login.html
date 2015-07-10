@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/css/bootstrap.css" rel="stylesheet">
+    <link href="../style/bootstrapValidator.css" rel="stylesheet">
+    <link href="../style/bootstrap-datetimepicker.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <form class="form-horizontal" id="myForm" action="#" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="username">username</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="username" name="username" type="text" placeholder="please entry username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="password">password</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="password" name="password" type="password" placeholder="please entry pasword">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="birthday">出生日期</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="birthday" name="birthday" type="text" placeholder="please choice birthday" readonly>
+            </div>
+            <!--<div class="col-sm-4">-->
+                <!--<div class="input-group date" id="birthday" data-date-format="YYYY-MM-DD">-->
+                    <!--<input type="text" class="form-control" name="birthday">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<span class="glyphicon-calendar glyphicon"></span>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-4">
+                <button class="btn btn-success" type="submit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrapValidator.js"></script>
+<script src="../js/bootstrap-datetimepicker.js"></script>
+<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+
+    $(function(){
+
+        $('#birthday').datetimepicker({
+            language:'zh-CN',  // 设置语言
+            format:'yyyy-MM-dd', // 设置日历格式
+            weekStart:0,  // 每周开始的时间 0-6 : 0代表周日  默认周日在前
+            autoclose:1,  // 选中日期后自动关闭日历   0: 不关闭  1： 关闭
+            todayBtn:1,   // 日历中显示今天按钮;  0 : 不显示  1 ： 显示
+            todayHighlight: 0,
+            useCurrent:true
+        });
+        $('#birthday').on('changeDate show',function(e){
+            $('#myForm')
+                    .data('bootstrapValidator')
+                    .updateStatus('birthday','NOT_VALIDATED', null)
+                    .validateField('birthday');
+        });
+
+
+        $('#myForm').bootstrapValidator({
+            feedbackIcons:{
+                valid:'glyphicon glyphicon-ok',
+                invalid:'glyphicon glyphicon-remove',
+                validating:'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                username:{
+                    validators:{
+                        notEmpty:{
+                            message:'用户名不能为空'
+                        }
+                    }
+                },
+                password:{
+                    validators:{
+                        notEmpty:{
+                            message:'密码不能为空'
+                        }
+                    }
+                },
+                birthday:{
+                    validators:{
+                        notEmpty:{
+                            message:'出生日期不能为空'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
